@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Lab003.Models.Product>
+
+<h2>Danh sách sản phẩm</h2>
+<a asp-action="Add" class="btn btn-success">Thêm sản phẩm</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Danh mục</th>
+            <th>Ảnh</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price VNĐ</td>
+                <td>@product.Category?.Name</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="@product.Name" width="100" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Display" asp-route-id="@product.Id" class="btn btn-info">Chi tiết</a>
+                    <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

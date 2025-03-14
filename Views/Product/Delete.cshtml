@@ -1,0 +1,24 @@
+﻿@model Lab003.Models.Product
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<h2>Xóa sản phẩm</h2>
+<p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p>Giá: @Model.Price VNĐ</p>
+    <p>@Model.Description</p>
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="@Model.Name" width="200" />
+    }
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

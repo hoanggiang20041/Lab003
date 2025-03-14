@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Lab003.Models.Category>
+
+<h2>Danh sách danh mục</h2>
+<a asp-action="Add" class="btn btn-success">Thêm danh mục</a>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Không có danh mục nào.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên danh mục</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>
+                        <a asp-action="Display" asp-route-id="@category.Id" class="btn btn-info">Chi tiết</a>
+                        <a asp-action="Update" asp-route-id="@category.Id" class="btn btn-warning">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

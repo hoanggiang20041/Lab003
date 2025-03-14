@@ -1,0 +1,11 @@
+﻿@model Lab003.Models.Category
+
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+}
+
+<h2>@Model.Name</h2>
+
+<p><strong>ID:</strong> @Model.Id</p>
+
+<a asp-action="Index" class="btn btn-primary">Quay lại</a>
